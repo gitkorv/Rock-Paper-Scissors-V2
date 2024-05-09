@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100dvh;
+    width: 100dvw;
+    font-family: "nickel-gothic-variable", sans-serif;
+    font-variation-settings: "slnt"0, "wdth"25;
+    /* font-size: 10rem; */
+    overflow: hidden;
+}
+
+/* body * {
+    border: 1px solid red;
+} */
+
+.main-container {
+    position: relative;
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cube-wrapper {
+    width: 100dvw;
+    height: 100dvh;
+    position: relative;
+    perspective: 100dvw;
+    transform-style: preserve-3d;
+}
+
+.panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    position: absolute;
+    height: 100dvh;
+    width: 100dvw;
+    gap: 10px;
+    background-color: aliceblue;
+    /* padding: 10px; */
+    /* border: 10px white solid; */
+}
+
+.panel.top {
+    height: 100dvw;
+    top: 0px;
+    transform-origin: top;
+    transform: rotate3d(1, 0, 0, -90deg);
+    /* background-color: yellow; */
+}
+
+.panel.left {
+    flex-direction: column;
+    left: 0px;
+    transform-origin: left;
+    transform: rotate3d(0, 1, 0, 90deg);
+}
+
+.panel.right {
+    right: 0px;
+    transform-origin: right;
+    transform: rotate3d(0, 1, 0, -90deg);
+    background-color: aqua;
+}
+
+.panel.back {
+    /* width: 100dvw; */
+
+    transform: translate3d(0, 0, -100dvw);
+}
+
+
+
+.panel.left div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.panel.bottom {
+    display: block;
+    /* position: relative; */
+    height: 100dvw;
+    /* width: auto; */
+    bottom: 0px;
+    transform-origin: bottom;
+    transform: rotate3d(1, 0, 0, 90deg);
+    overflow: visible;
+}
+
+.panel-bottom__bg {
+    display: grid;
+    position: relative;
+    /* bottom: 20px; */
+    grid-template-areas:
+        "top top top"
+        "button button button"
+        "bottom bottom bottom"
+        "bottom bottom bottom";
+    position: relative;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    /* background-color: rgb(38, 58, 58); */
+    overflow: visible;
+    /* perspective: 10px; */
+    /* transform: translateZ(20px); */
+}
+
+.panel-bottom__top {
+    color: #eee;
+    position: relative;
+    grid-area: top;
+    display: block;
+    height: 100%;
+    width: inherit;
+    background-color: black;
+    visibility: hidden;
+}
+
+.panel-bottom__btn-container {
+    display: flex;
+    margin: 0 5% 0 5%;
+    
+    justify-content: space-between;
+    position: relative;
+    /* left: -50%; */
+    /* bottom: 100px; */
+    /* background-color: rgb(126, 117, 117); */
+    /* width: 200%; */
+    grid-area: button;
+}
+
+.btn {
+    position: relative;
+    left: -150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    color: #eee;
+    background-color: rgb(186, 24, 24);
+    box-shadow: 0px 1dvw 0px 2px black;
+    transition: all .3s ease;
+}
+
+.slide-in-from-left {
+    left: -150%;
+    animation: btnSlideinFromLeft 1s ease forwards;
+}
+
+@keyframes btnSlideinFromLeft {
+    to {
+        left: 0px;
+    }
+}
+
+/* .btn span {
+    font-size: 10rem;
+} */
+
+.btn:hover {
+    transform: translateY(-10dvw) scale(115%);
+    box-shadow: 0px 7dvw 0px 2px black;
+    cursor: pointer;
+}
+
+btn:hover:active {
+    background-color: yellow;
+    transform: translateY(0dvw) scale(95%);
+    box-shadow: 0px 1dvw 0px 0px black;
+
+    transition-duration: .1s;
+}
+
+.plain-panel {
+    font-size: 30rem;
+    font-variation-settings: "slnt" 0, "wdth" 45;
+    position: absolute;
+    /* bottom: 0; */
+    z-index: -100;
+    width: 100%;
+    height: 100%;
+    /* display: flex; */
+    /* flex-direction: column; */
+
+    /* background-color: blueviolet; */
+    transition: top 2s;
+    /* animation: plain-panel-slide-in-from-top 2s linear; */
+}
+
+.plain-panel.start-minus-100-top {
+    top: -100%;
+}
+.plain-panel.start-minus-200-top {
+    top: -200%;
+}
+
+.plain-panel.top {
+    /* background-color: black; */
+    top: 100%;
+}
+.plain-panel.back {
+    top: 0%;
+}
